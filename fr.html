@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="gallery__inner">
-        <img class="gallery__item gallery__item--1" src="assets/bebe-1.jpg"/>
-        <img class="gallery__item gallery__item--2" src="assets/bebe-2.jpg"/>
-        <img class="gallery__item gallery__item--3" src="assets/bebe-3.jpg"/>
-        <img class="gallery__item gallery__item--4" src="assets/IMG_6835.JPG"/>
-        <img class="gallery__item gallery__item--5" src="assets/IMG_6697.JPG"/>
-        <img class="gallery__item gallery__item--6" src="assets/bebe-4.jpg"/>
+    <div class="gallery">
+        <img class="gallery__item gallery__item--1" src="assets/4.jpg"/>
+        <img class="gallery__item" src="assets/6.JPG"/>
+        <div class="gallery__item">
+            <video src="assets/1.mp4" style="transform: translateX(-22px)" id="video1" loop muted></video>
+        </div>
+        <!--<img class="gallery__item" src="assets/1.mp4"/>-->
+        <img class="gallery__item" src="assets/5.JPG"/>
+        <!--<div class="gallery__item">
+            <video src="assets/2.mp4" height="163" style="transform: translateX(-10px)" id="video2"></video>
+        </div>-->
+        <img class="gallery__item" src="assets/1.JPG"/>
+        <img class="gallery__item" src="assets/8.jpg"/>
+        <!--<img class="gallery__item gallery__item&#45;&#45;4" src="assets/IMG_6835.JPG"/>-->
+        <!--<img class="gallery__item gallery__item&#45;&#45;5" src="assets/IMG_6697.JPG"/>-->
     </div>
 
 <div class="text">
@@ -24,5 +32,16 @@
 <!--ajouter text taille kilo
 ajouter bouton "Afin de protéger l'environnement et ne pas surcharger les frigos, les impressions sont sur commande...
     pour cela envoyer message à laurentperroteau@hotmail.com"-->
+    <script>
+        function go(index, delay) {
+          setTimeout(function () {
+            document.getElementById('video' + index).play();
+            // if (index === 1) go(2, delay + 5000);
+            // if (index === 2) go(1, delay + 5000);
+          }, delay)
+        }
+
+        go(1, 5000);
+    </script>
 </body>
 </html>
