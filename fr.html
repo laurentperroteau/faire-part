@@ -4,44 +4,75 @@
     <meta charset="UTF-8">
     <title>Amalia</title>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="ctn">
+    <!--<video controls>
+        <source src="assets/1.2.mp4" type="video/mp4">
+    </video>-->
     <div class="gallery">
         <img class="gallery__item gallery__item--1" src="assets/4.jpg"/>
         <img class="gallery__item" src="assets/6.JPG"/>
         <div class="gallery__item">
-            <video src="assets/1.mp4" style="transform: translateX(-22px)" id="video1" loop muted></video>
+            <video class="gallery__item--video" id="video1" autoplay loop muted>
+                <source src="assets/1.2.mp4" type="video/mp4">
+            </video>
+            <img src="assets/foo-001.jpeg" class="gallery__item--video gallery__item--video-img" id="img1"/>
         </div>
-        <!--<img class="gallery__item" src="assets/1.mp4"/>-->
         <img class="gallery__item" src="assets/5.JPG"/>
-        <!--<div class="gallery__item">
-            <video src="assets/2.mp4" height="163" style="transform: translateX(-10px)" id="video2"></video>
-        </div>-->
         <img class="gallery__item" src="assets/1.JPG"/>
         <img class="gallery__item" src="assets/8.jpg"/>
-        <!--<img class="gallery__item gallery__item&#45;&#45;4" src="assets/IMG_6835.JPG"/>-->
-        <!--<img class="gallery__item gallery__item&#45;&#45;5" src="assets/IMG_6697.JPG"/>-->
     </div>
+    <!--<div class="gallery">
+        <img class="gallery__item gallery__item&#45;&#45;1" src="https://picsum.photos/300"/>
+        <img class="gallery__item" src="https://picsum.photos/300"/>
+        <div class="gallery__item">
+            <video class="gallery__item&#45;&#45;video" id="video1">
+                <source src="assets/1.2.mp4" type="video/mp4">
+            </video>
+            <img src="assets/foo-001.jpeg" class="gallery__item&#45;&#45;video gallery__item&#45;&#45;video-img" id="img1"/>
+        </div>
+        <img class="gallery__item" src="https://picsum.photos/300"/>
+        <img class="gallery__item" src="https://picsum.photos/300"/>
+        <img class="gallery__item" src="https://picsum.photos/300"/>
+    </div>-->
 
-<div class="text">
-    <h1>Amalia</h1>
-    <h4>Né le 22 septembre à 00h04 avec un poid de 2 kg 820</h4>
+    <div class="text">
+        <h1>Amalia</h1>
+        <h4>Né le 22 septembre à 00h04 avec un poid de 2 kg 820</h4>
+    </div>
 </div>
 
 <!--ajouter text taille kilo
 ajouter bouton "Afin de protéger l'environnement et ne pas surcharger les frigos, les impressions sont sur commande...
     pour cela envoyer message à laurentperroteau@hotmail.com"-->
-    <script>
-        function go(index, delay) {
-          setTimeout(function () {
-            document.getElementById('video' + index).play();
-            // if (index === 1) go(2, delay + 5000);
-            // if (index === 2) go(1, delay + 5000);
-          }, delay)
-        }
+<script>
+  (function () {
+    var timestamp = new Date().getTime();
+    var video  = document.getElementById('video1');
 
-        go(1, 5000);
-    </script>
+    function go() {
+      document.getElementById('img1').style.display = 'none';
+      video.play();
+      console.log('play', new Date().getTime() - timestamp);
+    }
+
+    video.addEventListener('loadeddata', function () {
+      var timeLeft = new Date().getTime() - timestamp;
+
+      console.log('Video ready', timeLeft);
+
+      if (timeLeft >= 3000) {
+        go();
+      } else {
+        setTimeout(function () {
+          go();
+        }, 3000 - timeLeft);
+      }
+    }, false);
+  })();
+</script>
 </body>
 </html>
