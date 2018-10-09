@@ -69,16 +69,16 @@ body {
 
   h1 {
     font-family: 'Amatic SC', sans-serif;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   h4 {
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     margin-top: 0;
     font-size: 15px;
-    font-family: sans-serif;
   }
 }
 
@@ -86,7 +86,18 @@ body {
   height: 100%;
 }
 
+.no-mobile {
+  display: none;
+}
+
 @media screen and (min-width: 830px) {
+  .mobile {
+    display: none;
+  }
+
+  .no-mobile {
+    display: flex;
+  }
   body {
     display: block;
   }

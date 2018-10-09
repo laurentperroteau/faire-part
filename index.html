@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Amalia</title>
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="ctn">
-    <!--<video controls>
-        <source src="assets/1.2.mp4" type="video/mp4">
-    </video>-->
     <div class="gallery">
         <img class="gallery__item gallery__item--1" src="assets/4.jpg"/>
         <img class="gallery__item" src="assets/6.JPG"/>
-        <div class="gallery__item">
-            <video class="gallery__item--video" id="video1" autoplay loop muted>
+        <div class="gallery__item no-mobile">
+            <video class="gallery__item--video" id="video1" loop muted>
                 <source src="assets/1.2.mp4" type="video/mp4">
             </video>
             <img src="assets/foo-001.jpeg" class="gallery__item--video gallery__item--video-img" id="img1"/>
         </div>
+        <img class="gallery__item mobile" src="assets/3.JPG"/>
         <img class="gallery__item" src="assets/5.JPG"/>
         <img class="gallery__item" src="assets/1.JPG"/>
         <img class="gallery__item" src="assets/8.jpg"/>
@@ -50,6 +48,10 @@ ajouter bouton "Afin de protéger l'environnement et ne pas surcharger les frigo
     pour cela envoyer message à laurentperroteau@hotmail.com"-->
 <script>
   (function () {
+    const lang = navigator.language.substr(0, 2).toLowerCase();
+    if (lang === 'es') {
+      document.getElementsByTagName('h4')[0].textContent = 'Nacida el 22 de septiembre a las 00h04 con un peso de 2 kg 820'
+    }
     var timestamp = new Date().getTime();
     var video  = document.getElementById('video1');
 
@@ -61,8 +63,6 @@ ajouter bouton "Afin de protéger l'environnement et ne pas surcharger les frigo
 
     video.addEventListener('loadeddata', function () {
       var timeLeft = new Date().getTime() - timestamp;
-
-      console.log('Video ready', timeLeft);
 
       if (timeLeft >= 3000) {
         go();
